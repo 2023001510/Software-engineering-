@@ -1,3 +1,4 @@
+#code to predict the weather 
 import numpy as np
 
 time = np.array([0, 4, 8, 12, 16, 20])  
@@ -14,3 +15,50 @@ predicted_temp = a * t_values**2 + b * t_values + c
 print("Predicted Temperatures (°C):")
 for t, temp in zip(t_values, predicted_temp):
     print(f"At {t:02d}:00 hrs -> {temp:.2f} °C")
+#output
+Developed Quadratic Model:
+T(t) = -0.0949t² + 2.2259t + 13.3214
+
+Predicted Temperatures (°C):
+At 00:00 hrs -> 13.32 °C
+At 01:00 hrs -> 15.45 °C
+At 02:00 hrs -> 17.39 °C
+At 03:00 hrs -> 19.15 °C
+At 04:00 hrs -> 20.71 °C
+At 05:00 hrs -> 22.08 °C
+At 06:00 hrs -> 23.26 °C
+At 07:00 hrs -> 24.25 °C
+At 08:00 hrs -> 25.06 °C
+At 09:00 hrs -> 25.67 °C
+At 10:00 hrs -> 26.09 °C
+At 11:00 hrs -> 26.33 °C
+At 12:00 hrs -> 26.37 °C
+At 13:00 hrs -> 26.23 °C
+At 14:00 hrs -> 25.89 °C
+At 15:00 hrs -> 25.36 °C
+At 16:00 hrs -> 24.65 °C
+At 17:00 hrs -> 23.75 °C
+At 18:00 hrs -> 22.65 °C
+At 19:00 hrs -> 21.37 °C
+At 20:00 hrs -> 19.89 °C
+At 21:00 hrs -> 18.23 °C
+At 22:00 hrs -> 16.38 °C
+At 23:00 hrs -> 14.33 °C
+At 24:00 hrs -> 12.10 °C
+
+# plotting the graph in matplotlib 
+try:
+    import matplotlib.pyplot as plt
+
+    plt.figure(figsize=(10, 6))
+    plt.scatter(time, temperature, color='blue', label='Observed Data')
+    plt.plot(t_values, predicted_temp, color='red', linestyle='--', label='Quadratic Prediction')
+    plt.title('Temperature Forecast Using Quadratic Model')
+    plt.xlabel('Time (Hours)')
+    plt.ylabel('Temperature (°C)')
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+except ImportError:
+    print("matplotlib not found. Run: pip install matplotlib")
