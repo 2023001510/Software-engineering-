@@ -1,0 +1,16 @@
+import numpy as np
+
+time = np.array([0, 4, 8, 12, 16, 20])  
+temperature = np.array([15, 18, 24, 29, 25, 19])  
+
+coefficients = np.polyfit(time, temperature, 2)
+a, b, c = coefficients
+
+print(f"\nDeveloped Quadratic Model:\nT(t) = {a:.4f}t² + {b:.4f}t + {c:.4f}\n")
+
+t_values = np.arange(0, 25, 1)
+predicted_temp = a * t_values**2 + b * t_values + c
+
+print("Predicted Temperatures (°C):")
+for t, temp in zip(t_values, predicted_temp):
+    print(f"At {t:02d}:00 hrs -> {temp:.2f} °C")
